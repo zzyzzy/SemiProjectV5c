@@ -1,6 +1,6 @@
 -- member
 create table member (
-  mno  number(5) primary key auto_increment,
+  mno  int primary key auto_increment,
   name varchar(15) not null,
   jumin varchar(18) not null,
 
@@ -17,12 +17,12 @@ create table member (
 
 -- board
 create table board (
-  bno NUMBER(5) primary key auto_increment,
+  bno int primary key auto_increment,
   title varchar(50) not null,
   userid varchar(18) not null,
   regdate datetime default CURRENT_TIMESTAMP,
-  thumbup NUMBER(5) default 0,
-  views NUMBER(5) default 0,
+  thumbup int default 0,
+  views int default 0,
   contents mediumtext not null
 );
 
