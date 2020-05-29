@@ -49,7 +49,7 @@
                 <div class="form-group row">
                     <label class="col-form-label col-2 text-right">
                         자동가입방지</label>
-                    <img src="../img/google_recaptcha.gif"
+                    <img src="/resources/img/google_recaptcha.gif"
                          width="50%" height="50%"
                          style="margin-left: -5px">
                 </div><!-- 자동가입방지 -->

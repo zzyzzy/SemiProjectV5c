@@ -186,7 +186,7 @@
                 <div class="form-group row">
                     <label class="col-2 col-form-label"
                            for="captcha">자동가입방지</label>
-                    <img src="../img/google_recaptcha.gif"
+                    <img src="/resources/img/google_recaptcha.gif"
                          width="50%" height="50%"
                          style="margin-left: -5px; margin-bottom: 5px;">
                     <input type="text"

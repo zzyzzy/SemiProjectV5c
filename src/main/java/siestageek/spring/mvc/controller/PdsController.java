@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import siestageek.spring.mvc.service.BoardService;
 import siestageek.spring.mvc.service.FileUpDownUtil;
@@ -12,6 +13,7 @@ import siestageek.spring.mvc.vo.BoardVO;
 import siestageek.spring.mvc.vo.PdsVO;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -99,6 +101,24 @@ public class PdsController {
     public String delete() {
 
         return "redirect:/pds/list";
+    }
+
+    // 첨부파일 다운로드하기
+    // 컨트롤러 메서드에 ResponseBody 애노테이션을 사용하면
+    // view를 이용해서 데이터를 출력하지 않고
+    // HTTP 응답으로 직접 데이터를 전송하겠다는 의미
+    @ResponseBody
+    @RequestMapping(value = "/pds/pdown")
+    public void pdown(HttpServletRequest req,
+                      HttpServletResponse res) {
+
+        FileUpDownUtil util = new FileUpDownUtil();
+
+        try {
+            util.procDownload(req, res);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
 }
