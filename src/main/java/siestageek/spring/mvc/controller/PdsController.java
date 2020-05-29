@@ -115,6 +115,9 @@ public class PdsController {
         FileUpDownUtil util = new FileUpDownUtil();
 
         try {
+            String pno = req.getParameter("pno");
+            System.out.println(pno);
+            psrv.modifyDown(pno);  // 첨부파일 다운수 처리
             util.procDownload(req, res);
         } catch (Exception ex) {
             ex.printStackTrace();
