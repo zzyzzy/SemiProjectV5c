@@ -40,7 +40,7 @@
                 </th></tr>
                 <tr style="background: #ccff99">
                     <td class="text-left">${p.userid}</td>
-                    <td class="text-right">${p.regdate} / ${p.thumbsup} / ${p.views}</td></tr>
+                    <td class="text-right">${p.regdate} / ${p.thumbup} / ${p.views}</td></tr>
                 <tr style="background: #ffffcc">
                     <td colspan="2" class="text-left"
                         style="border-bottom: 3px solid black;">${p.contents}</td></tr>
