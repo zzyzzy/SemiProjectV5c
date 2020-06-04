@@ -32,7 +32,8 @@
                     <li class="list-inline-item">
                         <a href="/gallery/view?gno=${g.gno}">
                             <img src="${thumbURL}${g.gno}.${fn:split(g.fname1, '.')[1]}"
-                                 class="img-thumbnail"></a></li>
+                                 class="img-thumbnail" width="235"
+                                 title="${g.title} / ${g.userid} / ${fn:substring(g.regdate,0,10)} / ${g.views}"></a></li>
                     </c:forEach>
 
                 </ul>

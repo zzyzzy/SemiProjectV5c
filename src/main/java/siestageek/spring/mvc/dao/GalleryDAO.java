@@ -48,6 +48,16 @@ public class GalleryDAO {
         return jdbcTemplate.query(selectGallerySQL, mapper);
     }
 
+    // 갤러리 본문 출력
+    public GalleryVO selectOneGallery(String gno) {
+        Object[] params = new Object[] { gno };
+
+        RowMapper<GalleryVO> mapper = new GalleryOneMapper();
+
+        return jdbcTemplate.queryForObject(
+                        selectOneGallerySQL, params, mapper);
+    }
+
     // selectGallery에 대한 RowMapper
     private class GalleryRowMapper
                             implements RowMapper<GalleryVO> {
@@ -64,6 +74,27 @@ public class GalleryDAO {
                null, rs.getString("fname1"),
                null, null );
 
+            return gvo;
+        }
+    }
+
+    // selectOneGallery에 대한 RowMapper
+    private class GalleryOneMapper
+                            implements RowMapper<GalleryVO> {
+        @Override
+        public GalleryVO mapRow(ResultSet rs, int num) throws SQLException {
+            GalleryVO gvo = new GalleryVO(
+                    rs.getString("gno"),
+                    rs.getString("title"),
+                    rs.getString("userid"),
+                    rs.getString("regdate"),
+                    rs.getString("thumbup"),
+                    rs.getString("views"),
+                    rs.getString("contents"),
+                    rs.getString("fname1"),
+                    rs.getString("fname2"),
+                    rs.getString("fname3")
+            );
             return gvo;
         }
     }
