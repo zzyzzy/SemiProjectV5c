@@ -30,6 +30,8 @@ public class GalleryController {
         mv.addObject("action", "../gallery/list.jsp");
         // 뷰로 넘길 데이터를 modelandview 객체에 담음
 
+        mv.addObject("glist", gsrv.showGallery());
+
         return mv;
     }
 

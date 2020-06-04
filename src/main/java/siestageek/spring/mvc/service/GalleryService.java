@@ -51,4 +51,9 @@ public class GalleryService {
         imgutil.imageCropResize(gvo.getFname1(), id);
     }
 
+    // 갤러리 목록 표시
+    public ArrayList<GalleryVO> showGallery() {
+        return (ArrayList<GalleryVO>)gdao.selectGallery();
+    }
+
 }
