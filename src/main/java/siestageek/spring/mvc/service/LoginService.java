@@ -2,50 +2,32 @@ package siestageek.spring.mvc.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import siestageek.spring.mvc.dao.BoardDAO;
-import siestageek.spring.mvc.vo.BoardVO;
+import siestageek.spring.mvc.dao.LoginDAO;
+import siestageek.spring.mvc.vo.MemberVO;
 
-import java.util.ArrayList;
+import javax.servlet.http.HttpSession;
 
-@Service("bsrv")
+@Service("lsrv")
 public class LoginService {
 
-    private BoardDAO bdao;
+    private LoginDAO ldao;
 
     @Autowired
-    public LoginService(BoardDAO bdao) {
-        this.bdao = bdao;
+    public LoginService(LoginDAO ldao) {
+        this.ldao = ldao;
     }
 
-    public String newBoard(BoardVO bd) {
-        String result = "데이터 입력 실패!";
+    // 로그인 체크
+    public boolean checkLogin(MemberVO mvo, HttpSession sess) {
+        boolean isLogin = false;
 
-        if (bdao.insertBoard(bd))
-            result = "데이터 입력 성공!!";
+        // 로그인 성공시 회원정보(아이디)를 세션에 저장
+        if (ldao.selectLogin(mvo) > 0) {
+            sess.setAttribute("UID", mvo.getUserid());
 
-        System.out.println(result);
-        // result 변수 값을 WAS 콘솔에 로그형태로 출력
+            isLogin = true;
+        }
 
-        return result;
-    }
-
-    public ArrayList<BoardVO> showBoard(String cp) {
-        int snum = (Integer.parseInt(cp) - 1) * 10;
-
-        return (ArrayList<BoardVO>)bdao.selectBoard(snum);
-    }
-
-    public BoardVO showOneBoard(String bno) {
-        return bdao.selectOneBoard(bno);
-    }
-
-    // 총 게시물 수 계산
-    public int countBoard() {
-        return bdao.selectCountBoard();
-    }
-
-    // 특정 게시글 삭제하기
-    public void removeBoard(String bno) {
-        bdao.deleteBoard(bno);
+        return isLogin;
     }
 }
