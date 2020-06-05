@@ -6,6 +6,8 @@
 </c:if>
 
     <!-- 메인영역 시작 -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
     <div id="main">
         <div class="margin30">
             <i class="fa fa-comments fa-2x"> 자유게시판</i>
@@ -54,9 +56,11 @@
                 <div class="form-group row">
                     <label class="col-form-label col-2 text-right">
                         자동가입방지</label>
-                    <img src="/resources/img/google_recaptcha.gif"
-                         width="50%" height="50%"
-                         style="margin-left: -5px">
+                    <div class="g-recaptcha"
+                         data-sitekey="6LfRlQAVAAAAAPpMCB8Bhn9qA7GwQakWkSRERw9r"></div>
+                    <input type="hidden"
+                           name="g-recaptcha" id="g-recaptcha">
+                    <span style="color:red">${checkFail}</span>
                 </div><!-- 자동가입방지 -->
 
                 <div class="row justify-content-center"
